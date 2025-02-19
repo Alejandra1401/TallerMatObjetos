@@ -22,6 +22,33 @@ public class metodos
         }
         return matProd;
     }
+    public objProducto[][] llenarMatrProdPunto2(int d)
+    {
+        Scanner sc = new Scanner(System.in);
+        objProducto[][] matProd = new objProducto[d][d];
+        for (int i = 0; i < matProd.length; i++) 
+        {
+            for (int j = 0; j < matProd.length; j++) 
+            {
+                objProducto obj = new objProducto(); //Siempre se crea, no olvidar colocarlo 
+                System.out.println("Ingrese la cantidad de productos ");
+                obj.setCantidad(sc.nextInt());
+                matProd[i][j] = obj;
+            }
+        }
+        return matProd;
+    }
+    public void mostrarMatObjPunto2(objProducto[][] m)
+    {
+        for (int i = 0; i < m.length; i++) 
+        {
+            for (int j = 0; j < m.length; j++) 
+            {
+                System.out.println("Cantidad:" + m[i][j].getCantidad());
+                System.out.println("\n");
+            }
+        }
+    }
     public void mostrarMatObjeto(objProducto[][] m)
     {
         for (int i = 0; i < m.length; i++) 
@@ -47,5 +74,17 @@ public class metodos
                 }
             }
         }
+    }
+    public int sumarMatriz (objProducto[][] ma)
+    {
+        int acumProd= 0;
+        for (int i = 0; i < ma.length; i++) 
+        {
+            for (int j = 0; j < ma[0].length; j++) 
+            {
+                acumProd += ma[i][j].getCantidad(); 
+            }
+        }
+        return acumProd;
     }
 }
