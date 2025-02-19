@@ -16,8 +16,13 @@ public class principal
             punto1 p1 = new punto1();
             p1.punto1buscProd(d);
                 break;
-        
+            case 2:
+            System.out.println("Es el punto 2");
+            punto2 p2 = new punto2();
+            p2.punto2SumCant(d);
+            break;
             default:
+            System.out.println("Pagina en mantenimiento ");
                 break;
         }
         
