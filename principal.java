@@ -21,6 +21,11 @@ public class principal
             punto2 p2 = new punto2();
             p2.punto2SumCant(d);
             break;
+            case 3:
+            System.out.println("Es el punto 3");
+            punto3 p3 = new punto3();
+            p3.punto3Libros(d);
+            break;
             default:
             System.out.println("Pagina en mantenimiento ");
                 break;
