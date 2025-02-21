@@ -96,10 +96,15 @@ public class metodos
             {
                 ObjLibreriap3 obj = new ObjLibreriap3(); //Siempre se crea y se pregunda dentro del for interno para que me llene y se renueve para la sgtre persona
                 System.out.println("Ingrese el titulo del libro ");
-                obj.setAutor(sc.next());
+                obj.setTitulo(sc.next());
                 System.out.println("Ingrese el autor del libro");
                 obj.setAutor(sc.next());
                 System.out.println("Ingrese el precio del libro ");
+                while (!sc.hasNextDouble())//VALIDANDO QUE INGRESE UN DOUBLE 
+                {
+                    System.out.println("El valor del precio es incorrecto");
+                    sc.next();//PARA QUE VUELVA Y PREGUNTE Y NO SEA UN CICLO INFINITO
+                }
                 obj.setPrecio(sc.nextInt());
                 ma[i][j] = obj;
             }
