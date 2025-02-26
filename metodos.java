@@ -139,4 +139,67 @@ public class metodos
         }
         return precMay;
     }
+    public objEstanteriap8[] CategoriasUnicasTienda (objEstanteriap8[][] ma)
+    {
+        objEstanteriap8[] categoriasUnicas = new objEstanteriap8[ma.length * ma[0].length];
+        int contTamVect = 0;
+        for (int i = 0; i < ma.length; i++) 
+        {
+            for (int j = 0; j < ma[i].length; j++) 
+            {
+                String categorias = ma[i][j].getCategoria();
+                boolean existe = false;//Inicializado como no hay ninguna categoria
+                for (int k = 0; k < contTamVect; k++)//Verificamos si la categoria ya esta en categoriasunicas[] 
+                {
+                    if(categoriasUnicas[k].getCategoria().equals(categorias));
+                    existe = true; //Ya existe la categoria, no la agregamos de nuevo 
+                    break;
+                }
+                if(!existe)//si no existe la categoria la agregamos al vector 
+                {
+                    categoriasUnicas[contTamVect++] = ma[i][j];//Agrega nueva categoria al vector 
+                }
+                
+            }
+        }
+        return categoriasUnicas;
+    }
+    public void matrizXCategorias( objEstanteriap8[][] ma, objEstanteriap8[] catUnicas)
+    {
+        int contVectTam = catUnicas.length;
+        for (int k = 0; k < contVectTam; k++) //Ciclo que recorre el vector de las categorias unicas
+        {
+            String categoriasUnicas = catUnicas[k].getCategoria();//obtiene la categoria actual en la iteracion
+            objEstanteriap8[][] categoriasProduc = new objEstanteriap8[ma.length][ma[0].length];
+            for (int i = 0; i < ma.length; i++) 
+            {
+                for (int j = 0; j < ma.length; j++) 
+                {
+                    if(ma[i][j].getCategoria().equals(categoriasUnicas))//compara si las categorias de la matriz es igual a la que esta en categorias unicas 
+                    {
+                        categoriasProduc[i][j] = ma[i][j];//si es verdadero lo de maoriginal lo pone en la matrizCategProd
+                    }
+                }
+            }
+            System.out.println("La categoria del producto es: " + categoriasUnicas);
+            metodos m = new metodos();//creo el objeto de la clase metodos para poder acceder(invocar) a el metodo mostrar
+            m.mostrarMatrizEstanteria(categoriasProduc);//Aqui se pone la matCategoriasProducto porque ya se le ha entregado lo que contiene la matOriginal 
+        }
+    }
+    public static void mostrarMatrizEstanteria(objEstanteriap8[][] ma)
+    {
+        for (int i = 0; i < ma.length; i++) 
+        {
+            for (int j = 0; j < ma[i].length; j++) 
+            {
+                if(ma[i][j] != null)
+                {
+                    System.out.println("Nombre del producto: " + ma[i][j].getNombre());
+                    System.out.println("Peso del producto: " + ma[i][j].getPeso());
+                    System.out.println("Categoria del producto:" + ma[i][j].getCategoria());
+                    System.out.println("\n");
+                }
+            }
+        }
+    }
 }
