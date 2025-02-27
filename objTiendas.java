@@ -35,12 +35,12 @@ public class objTiendas
     public void setStock(int stock) {
         this.stock = stock;
     }
-    public objTiendas[][] llenarMaTienda1(int d)
+    public objTiendas[][] llenarMatrizTiendasp5(int f, int c)
     {
-        objTiendas[][] ma = new objTiendas[d][d];
-        for (int i = 0; i < ma.length; i++) 
+        objTiendas[][] ma = new objTiendas[f][c];
+        for (int i = 0; i < f; i++) //ó m.length
         {
-            for (int j = 0; j < ma.length; j++) 
+            for (int j = 0; j < c; j++) // ó m[i].length 
             {
                 objTiendas obj = new objTiendas(); //Siempre se crea, NO OLIVDAR
                 System.out.println("Ingrese el nombre del producto de la tienda 1 ");
@@ -59,54 +59,91 @@ public class objTiendas
         }
         return ma;
     }
-    public objTiendas[][] llenarMaTienda2(int d)
+    public objTiendas[][] SumarStock(objTiendas[][] m1, objTiendas[][]m2)
     {
-        objTiendas[][] ma = new objTiendas[d][d];
-        for (int i = 0; i < ma.length; i++) 
+        if (((m1.length * m1[0].length) > (m2.length * m2[0].length))) 
         {
-            for (int j = 0; j < ma.length; j++) 
+            for (int i = 0; i < m1.length; i++) 
             {
-                objTiendas obj = new objTiendas(); //Siempre se crea, NO OLIVDAR
-                System.out.println("Ingrese el nombre del producto de la tienda 2 ");
-                obj.setNombre(sc.next());
-                System.out.println("Ingrese el precio del producto de la tienda 2 ");
-                while (!sc.hasNextDouble())//VALIDANDO QUE INGRESE UN DOUBLE 
+                for (int j = 0; j < m1[0].length; j++) 
                 {
-                    System.out.println("El valor del precio es incorrecto");
-                    sc.next();//PARA QUE VUELVA Y PREGUNTE Y NO SEA UN CICLO INFINITO
+                    for (int i2 = 0; i2 < m2.length; i2++) 
+                    {
+                        for (int j2 = 0; j2 < m2[0].length; j2++) 
+                        {
+                            if (m1[i][j].getNombre().equalsIgnoreCase(m2[i2][j2].getNombre())) 
+                            {
+                                m1[i][j].setStock(m1[i][j].getStock() + m2[i2][j2].getStock());   
+                            }
+                        }
+                        
+                    }
+                    
                 }
-                obj.setPrecio(sc.nextDouble());
-                System.out.println("Ingrese el stock(CANTIDAD) del producto de la tienda 2 ");
-                obj.setStock(sc.nextInt());
-                ma[i][j] = obj;
+                
             }
+            return m1;
         }
-        return ma;
+        else if (((m1.length * m1[0].length) < (m2.length * m2[0].length))) 
+        {
+            for (int i = 0; i < m2.length; i++) 
+            {
+                for (int j = 0; j < m2[0].length; j++) 
+                {
+                    for (int i2 = 0; i2 < m1.length; i2++) 
+                    {
+                        for (int j2 = 0; j2 < m1[0].length; j2++) 
+                        {
+                            if (m2[i][j].getNombre().equalsIgnoreCase(m1[i2][j2].getNombre())) 
+                            {
+                                m2[i][j].setStock(m1[i][j].getStock() + m2[i2][j2].getStock());   
+                            }
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            return m2;
+        }
+        else
+        {
+            for (int i = 0; i < m1.length; i++) 
+            {
+                for (int j = 0; j < m1[0].length; j++) 
+                {
+                    for (int i2 = 0; i2 < m2.length; i2++) 
+                    {
+                        for (int j2 = 0; j2 < m2[0].length; j2++) 
+                        {
+                            if (m1[i][j].getNombre().equalsIgnoreCase(m2[i2][j2].getNombre())) 
+                            {
+                                m1[i][j].setStock(m1[i][j].getStock() + m2[i2][j2].getStock());   
+                            }
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            return m1;
+        }
     }
-    public void mostrarMatTienda1(objTiendas[][] m)
+    public void MostrarMatrizObjPunto5(objTiendas[][] m)
     {
         for (int i = 0; i < m.length; i++) 
         {
             for (int j = 0; j < m.length; j++) 
             {
-                System.out.println("Nombre del producto tienda 1:" + m[i][j].getNombre());
-                System.out.println("Precio del producto tienda 1:" + m[i][j].getPrecio());
-                System.out.println("Stock del producto tienda 1:" + m[i][j].getStock());
+                System.out.println("Nombre: " + m[i][j].getNombre());
+                System.out.println("Precio: " + m[i][j].getPrecio());
+                System.out.println("Cantidad: " + m[i][j].getStock());
                 System.out.println("\n");
+                
             }
-        }
-    }
-    public void mostrarMatTienda2(objTiendas[][] m)
-    {
-        for (int i = 0; i < m.length; i++) 
-        {
-            for (int j = 0; j < m.length; j++) 
-            {
-                System.out.println("Nombre del producto tienda 2:" + m[i][j].getNombre());
-                System.out.println("Precio del producto tienda 2:" + m[i][j].getPrecio());
-                System.out.println("Stock del producto tienda 2:" + m[i][j].getStock());
-                System.out.println("\n");
-            }
+            
         }
     }
 }
