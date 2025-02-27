@@ -21,6 +21,11 @@ public class principal
                sc.next(); 
             }
             opt =sc.nextInt();
+            while (opt == 4 ) 
+            {
+                System.out.println("Debe ingresar dimesion de matriz cuadrada");
+                sc.next();
+            }
             System.out.println("Ingrese la dimesion de la matriz");
             d = sc.nextInt();
 
@@ -45,17 +50,6 @@ public class principal
                     System.out.println("Es el punto 4");
                     punto4 p4 = new punto4();
                     p4.punto4Teatro();
-                    break;
-                case 5:
-                    System.out.println("Es el punto 5");
-                    punto5 p5 = new punto5();
-                    p5.punto5Tiendas(d);
-                    break;
-                case 6:
-                    System.out.println("Es el punto 6");
-                    punto6 p6 = new punto6();
-                    p6.punto6SuperMec(d);
-                    break;
                 default:
                     System.out.println("Pagina en mantenimiento ");
                     continua = false;//BANDERA
